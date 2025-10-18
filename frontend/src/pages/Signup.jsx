@@ -5,24 +5,20 @@ import axios from "axios";
 export const Signup =() =>{
 
     let serverUrl = useContext(AuthDataContext);
-    const [user,setUser] = useState({
-        name:"",
-        email:"",
-        password:""
-    });
+    const [name,setName] = useState("");
+    const [email,setEmail] = useState("");
+    const [password,setPassword] = useState("");
 
-    const handleInput =(e)=>{
-        let {name,value} = e.target;
-        setUser((prv)=>({...prv,[name]:value}))
-    }
+    
     const handleSubmit = async (e)=>{
+
         try{
             e.preventDefault();
-            let result = await axios.post(serverUrl+"/api/auth/signup",user.name,user.email,user.password,{withCredentials:true});
-
+            let result = await axios.post(serverUrl+"/api/auth/signup",{name,email,password},{withCredentials:true});
+            console.log("Signup succesfully "+name,email,password);
         }
         catch(error){
-            console.log(error);
+            console.log("Singup error "+error);
         }
     }
     return(
@@ -34,15 +30,15 @@ export const Signup =() =>{
                 <form action="" onSubmit={handleSubmit}>
                     <div className="input-group">
                         <label htmlFor="name" >Name</label>
-                        <input type="text" name="name" placeholder="Enter Name" value={user.name} onChange={handleInput}/>
+                        <input type="text" name="name" placeholder="Enter Name" value={name} onChange={(e)=>setName(e.target.value)}/>
                     </div>
                     <div className="input-group">
                         <label htmlFor="email" >Email</label>
-                        <input type="email" name="email" placeholder="Enter Email" value={user.email} onChange={handleInput}/>
+                        <input type="email" name="email" placeholder="Enter Email" value={email} onChange={(e)=>setEmail(e.target.value)}/>
                     </div>
                     <div className="input-group">
                         <label htmlFor="password" >Password</label>
-                        <input type="password" name="password" placeholder="Enter Password" value={user.password} onChange={handleInput}/>
+                        <input type="password" name="password" placeholder="Enter Password" value={password} onChange={(e)=>setPassword(e.target.value)}/>
                     </div>
                     <div className="input-group">
                         <button className="btn">Sign Up</button>

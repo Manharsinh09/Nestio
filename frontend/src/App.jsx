@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import './App.css'
 import { Routes, Route, BrowserRouter } from 'react-router-dom'
-import { Home } from './templates/Home'
-import { Login } from './templates/Login'
-import { Signup } from './templates/Signup'
+import { Home } from './pages/Home'
+import { Login } from './pages/Login'
+import { Signup } from './pages/Signup'
 function App() {
 
   return (

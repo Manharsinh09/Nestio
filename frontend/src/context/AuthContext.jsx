@@ -5,12 +5,9 @@ export const AuthDataContext = createContext();
 export const AuthContext = ({children})=>{
     
     let serverUrl = " http://localhost:8000";
-    let value ={
-        serverUrl
-    }
 
     return(
-        <AuthDataContext.Provider value={value}>
+        <AuthDataContext.Provider value={serverUrl}>
             {children}
         </AuthDataContext.Provider>
     )

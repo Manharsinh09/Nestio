@@ -8,13 +8,14 @@ dotenv.config();
 const app = express();
 
 const port = process.env.PORT || 6000;
-app.use(express.json())
-app.use(cookieParser())
-app.use('/api/auth',authRouter);
 app.use(cros({
     origin:"http://localhost:5173",
     credentials:true,
 }))
+
+app.use(express.json())
+app.use(cookieParser())
+app.use('/api/auth',authRouter);
 
 // app.get('/',(req,res)=>{
 //     res.send("Hello World");
